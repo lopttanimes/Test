@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mrdivinn | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #111111;
+      --text: #e0e0e0;
+      --muted: #888888;
+      --accent: #4caf50;
+      --accent2: #8bc34a;
+      --accent3: #2e7d32;
+      --border: rgba(100, 150, 100, 0.15);
+      --shadow: 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+    * { 
+      box-sizing: border-box; 
+      margin: 0;
+      padding: 0;
+    }
+    html { 
+      scroll-behavior: smooth; 
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at top, #1a1a1a 0%, var(--bg) 62%);
+      line-height: 1.5;
+      letter-spacing: 0.01em;
+    }
+    .wrap { 
+      width: min(1180px, 94vw); 
+      margin: 0 auto; 
+      padding: 3rem 0 4rem; 
+    }
+    .section { 
+      margin-bottom: 3.5rem; 
+      padding: 1.2rem 1.4rem; 
+      border: 1px solid var(--border); 
+      border-radius: 16px; 
+      background: linear-gradient(180deg, rgba(20, 30, 20, 0.58), rgba(10, 15, 10, 0.76));
+      box-shadow: var(--shadow); 
+    }
+    .panel-title { 
+      font-size: clamp(1.2rem, 2vw, 1.35rem); 
+      color: var(--muted); 
+      margin: 0 0 .75rem; 
+      text-transform: uppercase; 
+      letter-spacing: .16em; 
+    }
+    h1 { 
+      margin: 0; 
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--accent);
+    }
+    h2 { 
+      margin: .2rem 0 1rem; 
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+      color: var(--accent2);
+    }
+    p { 
+      margin: .6rem 0; 
+    }
+    .subtext { 
+      color: var(--muted); 
+    }
+    .hero { 
+      display: grid; 
+      gap: 1rem; 
+    }
+    .hero-grid { 
+      margin-top: .85rem; 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: .75rem; 
+    }
+    .btn { 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center; 
+      background: linear-gradient(120deg, var(--accent3), var(--accent));
+      color: #fff; 
+      border: none; 
+      padding: .72rem 1.16rem; 
+      border-radius: 999px; 
+      text-decoration: none; 
+      font-size: 0.96rem; 
+      font-weight: 600; 
+      transition: transform .2s ease, box-shadow .2s ease; 
+      box-shadow: 0 8px 20px rgba(42, 154, 42, 0.4);
+    }
+    .btn:hover { 
+      transform: translateY(-2px) scale(1.01); 
+      box-shadow: 0 14px 26px rgba(42, 154, 42, 0.52);
+    }
+    .grid { 
+      display: grid; 
+      gap: 1rem; 
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+    .video-card { 
+      position: relative; 
+      overflow: hidden; 
+      border-radius: 12px; 
+      border: 1px solid rgba(100, 150, 100, 0.2); 
+      background: rgba(14, 20, 14, 0.75); 
+      box-shadow: inset 0 0 0 1px rgba(148, 167, 148, 0.08), 0 10px 25px rgba(0,0,0,0.33);
+    }
+    .video-card.bigger { 
+      grid-column: span 2; 
+    }
+    .video-card video, 
+    .video-card iframe { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; 
+      aspect-ratio: 16 / 9; 
+      display: block; 
+      border: 0; 
+      transition: transform .4s ease, filter .4s ease; 
+    }
+    .video-card:hover video, 
+    .video-card:hover iframe { 
+      transform: scale(1.04); 
+      filter: brightness(1.1) saturate(1.05); 
+    }
+    .video-title { 
+      position: absolute; 
+      bottom: 0; 
+      width: 100%; 
+      text-align: left; 
+      padding: .64rem .75rem; 
+      background: linear-gradient(180deg, transparent 0%, rgba(10, 14, 10, 0.85) 90%); 
+      color: #fff; 
+      font-size: .85rem; 
+      letter-spacing:.01em;
+    }
+    .list-compact { 
+      padding-left: 1.1rem; 
+      margin-top: .4rem; 
+    }
+    .list-compact li { 
+      margin-bottom: .35rem; 
+      color: var(--text); 
+    }
+    .split { 
+      display: flex; 
+      gap: 1.2rem; 
+      flex-wrap: wrap; 
+    }
+    .card { 
+      flex: 1; 
+      min-width: 232px; 
+      padding: .9rem 1rem; 
+      background: rgba(15, 20, 15, 0.9); 
+      border: 1px solid rgba(100, 150, 100, 0.25); 
+      border-radius: 12px;
+    }
+    .capabilities-grid { 
+      display: grid; 
+      gap: 1rem; 
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .capability-card { 
+      padding: 1rem; 
+      background: rgba(15, 20, 15, 0.7); 
+      border: 1px solid rgba(100, 150, 100, 0.2); 
+      border-radius: 12px;
+    }
+    .capability-card h3 { 
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    .capability-card.can h3 { 
+      color: var(--accent2);
+    }
+    .capability-card.cannot h3 { 
+      color: #f44336;
+    }
+    .discord-section { 
+      text-align: center; 
+      padding: 2rem; 
+      background: rgba(15, 20, 15, 0.5); 
+      border-radius: 12px;
+      border: 1px solid rgba(100, 150, 100, 0.3);
+    }
+    .discord-username { 
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--accent2);
+      text-shadow: 0 0 10px rgba(139, 195, 74, 0.3);
+    }
+    .video-placeholder { 
+      width: 100%; 
+      height: 200px; 
+      aspect-ratio: 16 / 9; 
+      background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(139, 195, 74, 0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      border: 2px dashed rgba(76, 175, 80, 0.4);
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+    }
+    @media (max-width: 880px) {
+      .section { 
+        padding: 1rem; 
+      }
+      .btn { 
+        width: 100%; 
+        justify-content: center; 
+      }
+      .video-card.bigger { 
+        grid-column: unset; 
+      }
+      .hero { 
+        display: block; 
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    
+    <!-- OVERVIEW SECTION (Top) -->
+    <section class="section" id="overview">
+      <p class="panel-title">What I Can Do</p>
+      <h1>mrdivinn</h1>
+      <h2>Roblox Animator</h2>
+      
+      <p class="subtext" style="margin-bottom: 1.5rem;">I am an animator of 2+ years who can make simple and advanced animations per the customer's request.</p>
+      
+      <div class="capabilities-grid">
+        <div class="capability-card can">
+          <h3>✓ What I Can Do</h3>
+          <ul class="list-compact">
+            <li>R6</li>
+            <li>R15</li>
+            <li>Custom models/rigs</li>
+            <li>Combat systems</li>
+            <li>First person</li>
+            <li>Gun shooting animations (semi and automatic)</li>
+            <li>Complex CustomAnimations</li>
+            <li>Emotes</li>
+            <li>Movement</li>
+            <li>Moon Animator</li>
+            <li>Blender</li>
+            <li>Eclipse Animator</li>
+          </ul>
+        </div>
+        
+        <div class="capability-card cannot">
+          <h3>✗ What I Can't Do</h3>
+          <ul class="list-compact">
+            <li>Cutscenes</li>
+            <li>VFX or Scripted related animations</li>
+          </ul>
+          <p style="margin-top: 0.75rem; font-size: 0.9rem; color: var(--muted);">
+            <em>Note: I used Claude for animations that required scripting and/or VFX</em>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO PORTFOLIO SECTION (Middle) -->
+    <section class="section" id="portfolio">
+      <p class="panel-title">My Work</p>
+      <h2>Animations & 3D Models</h2>
+      <p class="subtext" style="margin-bottom: 1rem;">Hover over items to see them in action.</p>
+      
+      <div class="grid">
+        <!-- Luffy M1 Showcase -->
+        <article class="video-card bigger">
+          <iframe 
+            src="https://streamable.com/e/tgrpxy?autoplay=1&loop=1&muted=1&controls=0" 
+            allow="autoplay; fullscreen; encrypted-media" 
+            allowfullscreen 
+            loading="lazy" 
+            style="width: 100%; height: 100%; border: 0;">
+          </iframe>
+          <div class="video-title">Luffy M1 Showcase</div>
+        </article>
+        
+        <!-- R15 Running Showcase -->
+        <article class="video-card bigger">
+          <iframe 
+            src="https://streamable.com/e/68ers0?autoplay=1&loop=1&muted=1&controls=0" 
+            allow="autoplay; fullscreen; encrypted-media" 
+            allowfullscreen 
+            loading="lazy" 
+            style="width: 100%; height: 100%; border: 0;">
+          </iframe>
+          <div class="video-title">R15 Running Showcase</div>
+        </article>
+        
+        <!-- Toji M1 Showcase -->
+        <article class="video-card">
+          <iframe 
+            src="https://streamable.com/e/t9ejaf?autoplay=1&loop=1&muted=1&controls=0" 
+            allow="autoplay; fullscreen; encrypted-media" 
+            allowfullscreen 
+            loading="lazy" 
+            style="width: 100%; height: 100%; border: 0;">
+          </iframe>
+          <div class="video-title">Toji M1 Showcase</div>
+        </article>
+        
+        <!-- Toji Melee Showcase -->
+        <article class="video-card">
+          <iframe 
+            src="https://streamable.com/e/jsa0zt?autoplay=1&loop=1&muted=1&controls=0" 
+            allow="autoplay; fullscreen; encrypted-media" 
+            allowfullscreen 
+            loading="lazy" 
+            style="width: 100%; height: 100%; border: 0;">
+          </iframe>
+          <div class="video-title">Toji Melee Showcase</div>
+        </article>
+        
+        <!-- Walking Showcase -->
+        <article class="video-card">
+          <iframe 
+            src="https://streamable.com/e/ulsy88?autoplay=1&loop=1&muted=1&controls=0" 
+            allow="autoplay; fullscreen; encrypted-media" 
+            allowfullscreen 
+            loading="lazy" 
+            style="width: 100%; height: 100%; border: 0;">
+          </iframe>
+          <div class="video-title">Walking Showcase</div>
+        </article>
+        
+        <!-- Custom Rig Scp 939 Showcase (3D Model Image) -->
+        <article class="video-card">
+          <img 
+            src="videos/Custom Rig Scp 939 Showcase.webp" 
+            alt="Custom Rig Scp 939 3D Model" 
+            style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          <div class="video-title">Custom Rig Scp 939 Showcase (3D Model)</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT/DISCORD SECTION (Bottom) -->
+    <section class="section" id="contact">
+      <p class="panel-title">Contact</p>
+      <h2>Get In Touch</h2>
+      
+      <div class="discord-section">
+        <p style="color: var(--muted); margin-bottom: 1rem;">Available on Discord for commissions and inquiries:</p>
+        <div class="discord-username">mrdivinn</div>
+        <p style="color: var(--muted); margin-top: 1rem; font-size: 0.9rem;">
+          Serious inquiries only. DM me to discuss your animation needs.
+        </p>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>
